@@ -74,17 +74,17 @@ public class SpawnItems : MonoBehaviour
         if (itemToSpawn == ItemType.candycane)
         {
             instance = Instantiate(candycanePrefab, ChooseSpawnPos(), Quaternion.identity);
-            instance.GetComponent<MoveObject>().speed = moveSpeed * 1.5f;//these move a bit faster
+            instance.GetComponent<MoveItem>().speed = moveSpeed * 2.5f;//these move a bit faster
         }
         else if (itemToSpawn == ItemType.nasty)
         {
             instance = Instantiate(nastyPrefab, ChooseSpawnPos(), Quaternion.identity);
-            instance.GetComponent<MoveObject>().speed = moveSpeed;
+            instance.GetComponent<MoveItem>().speed = moveSpeed * 2;
         }
         else if (itemToSpawn == ItemType.marshmallow)
         {
             instance = Instantiate(marshmallowPrefab, ChooseSpawnPos(), Quaternion.identity);
-            instance.GetComponent<MoveObject>().speed = moveSpeed;
+            instance.GetComponent<MoveItem>().speed = moveSpeed;
         }
 
     }

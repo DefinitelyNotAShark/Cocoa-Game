@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveObject : MonoBehaviour
+public class MoveItem : MonoBehaviour
 {
     [HideInInspector]
     public float speed;//speed is given via the spawn script;
