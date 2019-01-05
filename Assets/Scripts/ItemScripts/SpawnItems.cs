@@ -34,10 +34,13 @@ public class SpawnItems : MonoBehaviour
     private GameObject marshmallowPrefab, candycanePrefab, nastyPrefab;
     #endregion
 
-
+    private SpriteRenderer renderer;
+    private float rendererExtentsX;
 
     void Start ()
     {
+        renderer = marshmallowPrefab.GetComponent<SpriteRenderer>();
+        rendererExtentsX = renderer.bounds.extents.x;
         StartCoroutine(SpawnLoop());
 	}
 	
@@ -91,6 +94,6 @@ public class SpawnItems : MonoBehaviour
 
     private Vector2 ChooseSpawnPos()
     {
-        return Camera.main.ScreenToWorldPoint(new Vector2(Random.Range(0, Screen.width), Screen.height));
+        return Camera.main.ScreenToWorldPoint(new Vector2(Random.Range(0 15, Screen.width - 15), Screen.height));
     }
 }
