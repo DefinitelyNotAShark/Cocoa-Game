@@ -94,6 +94,6 @@ public class SpawnItems : MonoBehaviour
 
     private Vector2 ChooseSpawnPos()
     {
-        return Camera.main.ScreenToWorldPoint(new Vector2(Random.Range(0 15, Screen.width - 15), Screen.height));
+        return Camera.main.ScreenToWorldPoint(new Vector2(Random.Range(15, Screen.width - 15), Screen.height));
     }
 }
