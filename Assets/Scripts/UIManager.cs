@@ -58,6 +58,7 @@ public class UIManager : MonoBehaviour
         {
             comboText.enabled = false;
             comboText.color = Color.white;
+            comboParticles.Stop();
         }
     }
     #region Public Functions
