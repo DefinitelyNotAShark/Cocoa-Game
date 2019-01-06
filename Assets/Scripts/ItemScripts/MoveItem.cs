@@ -30,18 +30,22 @@ public class MoveItem : MonoBehaviour
             transform.Translate(new Vector2(0, -1 * speed * Time.deltaTime));//move it normally
         else
         {
+            if (this.gameObject.CompareTag("Marshmallow"))
+            {
+                UIManager.comboNum = 0;
+            }
             StartCoroutine(fadeOut());
         }
     }
 
     IEnumerator fadeOut()//this is going to fade our object out so the player really feels the weight of it disappearing
     {
-        yield return new WaitForSeconds(.3f);//wait for just a bit before it starts to fade
+        yield return new WaitForSeconds(.02f);//wait for just a bit before it starts to fade
 
         while(renderer.color.a > 0)//while it's not invisible
         {
-            yield return new WaitForSeconds(.1f);
-            colorAlpha -= .1f;//decrease the float
+            yield return new WaitForSeconds(.2f);
+            colorAlpha -= .03f;//decrease the float
             thisColor.a = colorAlpha;//make the color var's alpha = the float
             renderer.color = thisColor;//set our color var to be our new color
         }

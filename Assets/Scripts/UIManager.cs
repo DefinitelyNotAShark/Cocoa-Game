@@ -16,23 +16,49 @@ public class UIManager : MonoBehaviour
         Satisfactory,
         Acceptable,
         Poor,
-        Low,
         Bad,
+        Awful,
         Disgusting,
         Inedible,
         LiterallyGarbage
     }
 
     private Quality cocoaQuality;
-
+    
     [SerializeField]
     private Text pointText;
 
-    private int points = 0;
+    [SerializeField]
+    private Text comboText;
 
+    private ParticleSystem comboParticles;
+    private int points = 0;
+    public static int comboNum = 0;
+
+
+    private void Start()
+    {
+        comboParticles = comboText.GetComponentInChildren<ParticleSystem>();
+    }
     private void Update()
     {
         pointText.text = "Points: " + points;
+        comboText.text = "Combo x " + comboNum + "!";
+
+        if(comboNum >=5)
+        {
+            comboText.enabled = true;//show our combo
+            if(comboNum == 10)
+            {
+                comboText.color = Color.yellow;
+                comboParticles.Play();
+            }
+        }
+        else
+        {
+            comboText.enabled = false;
+            comboText.color = Color.white;
+        }
     }
     #region Public Functions
 
@@ -42,8 +68,8 @@ public class UIManager : MonoBehaviour
     }
 
     public void IncreaseQuality()
-    {
-        if(cocoaQuality > 0)//if quality isn't at top notch
+    {  
+        if (cocoaQuality > 0)//if quality isn't at top notch
         {
             cocoaQuality--;
         }
