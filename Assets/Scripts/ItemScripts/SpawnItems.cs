@@ -6,12 +6,18 @@ public class SpawnItems : MonoBehaviour
 {
     public enum ItemType
     {
-        marshmallow, 
+        marshmallow,
         candycane,
         nasty
     }
 
     #region SerializeFields
+    [SerializeField]
+    private Color[] marshColors;
+
+    [SerializeField]
+    private GameObject[] marshPrefabs;
+
     [SerializeField]
     private float moveSpeed;
 
@@ -31,7 +37,7 @@ public class SpawnItems : MonoBehaviour
     private int candyCaneProbability, nastyProbability;
 
     [SerializeField]
-    private GameObject marshmallowPrefab, candycanePrefab, nastyPrefab;
+    private GameObject candycanePrefab, nastyPrefab;
     #endregion
 
     private SpriteRenderer renderer;
@@ -39,8 +45,8 @@ public class SpawnItems : MonoBehaviour
 
     void Start ()
     {
-        renderer = marshmallowPrefab.GetComponent<SpriteRenderer>();
-        rendererExtentsX = renderer.bounds.extents.x;
+        //renderer = marshPrefabs[0].GetComponent<SpriteRenderer>();//it's the first one only because I need something vaguely the size
+        //rendererExtentsX = renderer.bounds.extents.x;
         StartCoroutine(SpawnLoop());
 	}
 	
@@ -86,8 +92,9 @@ public class SpawnItems : MonoBehaviour
         }
         else if (itemToSpawn == ItemType.marshmallow)
         {
-            instance = Instantiate(marshmallowPrefab, ChooseSpawnPos(), Quaternion.identity);
+            instance = Instantiate(marshPrefabs[Random.Range(0, 3)], ChooseSpawnPos(), Quaternion.identity);
             instance.GetComponent<MoveItem>().speed = moveSpeed;
+            instance.GetComponent<SpriteRenderer>().color = marshColors[Random.Range(0, marshColors.Length)];
         }
 
     }
