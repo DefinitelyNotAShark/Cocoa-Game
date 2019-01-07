@@ -20,6 +20,9 @@ public class EndText : MonoBehaviour
     [SerializeField]
     private GameObject playAgainButton, mainMenuButton;
 
+    [SerializeField]
+    private GameObject backgroundMusicObject;
+
     private AudioSource audio;
 
 	void Start ()
@@ -50,6 +53,7 @@ public class EndText : MonoBehaviour
         Cursor.visible = true;
         playAgainButton.SetActive(true);
         mainMenuButton.SetActive(true);
+        backgroundMusicObject.GetComponent<AudioSource>().Play();
     }
 
     private void StartParticleSystem()

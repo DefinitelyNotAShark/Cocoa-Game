@@ -21,9 +21,31 @@ public class PlayerDetectColl : MonoBehaviour
     [SerializeField]
     private float dingVolume, splashVolume, wrongVolume;
 
+    [SerializeField]
+    private Sprite glassesSprite, noGlassesSprite;
+
+    private Animator animator;
+    private SpriteRenderer renderer;
+
     private void Start()
     {
+        animator = GetComponent<Animator>();
+        renderer = GetComponent<SpriteRenderer>();
         audio = GetComponent<AudioSource>();
+    }
+
+    private void Update()
+    {
+        if (UIManager.comboNum >= 5)
+        {
+            animator.enabled = false;
+            renderer.sprite = glassesSprite;
+        }
+        else
+        {
+            animator.enabled = true;
+            renderer.sprite = noGlassesSprite;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

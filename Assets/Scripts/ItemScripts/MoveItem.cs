@@ -40,6 +40,8 @@ public class MoveItem : MonoBehaviour
 
     IEnumerator fadeOut()//this is going to fade our object out so the player really feels the weight of it disappearing
     {
+        GetComponent<BoxCollider2D>().enabled = false;//make it so we can't hit it once it's on the ground
+
         yield return new WaitForSeconds(.02f);//wait for just a bit before it starts to fade
 
         while(renderer.color.a > 0)//while it's not invisible
