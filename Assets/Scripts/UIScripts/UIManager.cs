@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    private enum Quality
+    public enum Quality
     {
         Perfect,
         Incredible,
@@ -23,7 +23,7 @@ public class UIManager : MonoBehaviour
         LiterallyGarbage
     }
 
-    private Quality cocoaQuality;
+    public static Quality cocoaQuality = Quality.Satisfactory;
     
     [SerializeField]
     private Text pointText;

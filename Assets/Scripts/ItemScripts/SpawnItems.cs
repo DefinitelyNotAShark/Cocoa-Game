@@ -88,7 +88,7 @@ public class SpawnItems : MonoBehaviour
         else if (itemToSpawn == ItemType.nasty)
         {
             instance = Instantiate(nastyPrefab, ChooseSpawnPos(), Quaternion.identity);
-            instance.GetComponent<MoveItem>().speed = moveSpeed;
+            instance.GetComponent<MoveItem>().speed = moveSpeed * 2;
         }
         else if (itemToSpawn == ItemType.marshmallow)
         {
